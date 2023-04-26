@@ -50,10 +50,8 @@ form button:hover {
 
 
 .coach-box {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 40px);
-  grid-template-rows: repeat(auto-fill, 40px);
-  gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   max-width: 800px;
@@ -74,6 +72,7 @@ form button:hover {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  margin: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
@@ -87,61 +86,15 @@ form button:hover {
   background-color: #e39334;
 }
 
-@media (max-width: 576px) { /* for mobile devices */
+@media (max-width: 768px) {
   .coach-box {
-    grid-template-columns: repeat(auto-fill, 25px);
-    grid-template-rows: repeat(auto-fill, 25px);
-    gap: 3px;
-    padding: 5px;
-    border-radius: 5px;
-  }
-
-  .seat {
-    font-size: 12px;
-    width: 25px;
-    height: 25px;
-  }
-
-  form label {
-    font-size: 14px;
-  }
-
-  form input[type="number"] {
-    width: 35px;
-    font-size: 14px;
-    padding: 3px;
-  }
-
-  form button {
-    padding: 3px 10px;
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 577px) and (max-width: 991px) { /* for tablet devices */
-  .coach-box {
-    grid-template-columns: repeat(auto-fill, 30px);
-    grid-template-rows: repeat(auto-fill, 30px);
-    gap: 3px;
+    flex-wrap: wrap;
   }
 
   .seat {
     font-size: 14px;
     width: 30px;
     height: 30px;
-  }
-}
-
-@media (min-width: 992px) { /* for desktop devices */
-  .coach-box {
-    grid-template-columns: repeat(auto-fill, 40px);
-    grid-template-rows: repeat(auto-fill, 40px);
-    gap: 5px;
-  }
-
-  .seat {
-    font-size: 18px;
-    width: 40px;
-    height: 40px;
+    margin: 3px;
   }
 }
