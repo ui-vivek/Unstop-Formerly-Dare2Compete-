@@ -2,104 +2,101 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #F8F8F8;
+  margin-top: 50px;
 }
 
 form {
   margin-bottom: 20px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  font-size: 18px;
-  font-weight: bold;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 form label {
   margin-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 form input[type="number"] {
   width: 50px;
-  margin-right: 10px;
   font-size: 16px;
-  font-weight: bold;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 form button {
-  padding: 8px 20px;
-  background-color: #FF6347;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  padding: 5px 15px;
   font-size: 16px;
   font-weight: bold;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
 }
 
 form button:hover {
-  background-color: #FF5733;
+  background-color: #388e3c;
 }
+
 
 .coach-box {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+  grid-template-columns: repeat(auto-fill, 40px);
+  grid-template-rows: repeat(auto-fill, 40px);
   gap: 5px;
   justify-content: center;
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .seat {
-  border: 1px solid black;
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
   font-weight: bold;
+  background-color: #42b3f5;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.available {
-  background-color: #87CEEB;
-  color: white;
+.seat.booked {
+  background-color: #dd4444;
+  cursor: not-allowed;
 }
 
-.booked {
-  background-color: #FF6347;
-  color: white;
+.seat.selected {
+  background-color: #e39334;
 }
 
 @media (max-width: 768px) {
   .coach-box {
-    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+    grid-template-columns: repeat(auto-fill, 30px);
+    grid-template-rows: repeat(auto-fill, 30px);
     gap: 3px;
-    padding: 10px;
   }
 
   .seat {
     font-size: 14px;
-  }
-
-  form {
-    font-size: 14px;
-  }
-
-  form input[type="number"] {
-    width: 40px;
-    font-size: 14px;
-  }
-
-  form button {
-    padding: 6px 16px;
-    font-size: 14px;
+    width: 30px;
+    height: 30px;
   }
 }
