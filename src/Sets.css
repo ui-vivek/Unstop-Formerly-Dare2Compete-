@@ -1,0 +1,75 @@
+.coach-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+form label {
+  margin-right: 10px;
+}
+
+form input[type="number"] {
+  width: 50px;
+}
+
+form button {
+  padding: 5px 10px;
+}
+
+.coach-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 40px);
+  grid-template-rows: repeat(auto-fill, 40px);
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.seat {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  height: 40px;
+  width: 40px;
+}
+
+.available {
+  background-color: lightblue;
+}
+
+.booked {
+  background-color: salmon;
+}
+
+@media (max-width: 768px) {
+  .coach-box {
+    grid-template-columns: repeat(auto-fill, 30px);
+    grid-template-rows: repeat(auto-fill, 30px);
+    gap: 3px;
+    max-width: 360px;
+  }
+
+  .seat {
+    font-size: 10px;
+    height: 30px;
+    width: 30px;
+  }
+
+  form input[type="number"] {
+    width: 30px;
+  }
+
+  form button {
+    padding: 5px;
+    font-size: 10px;
+  }
+}

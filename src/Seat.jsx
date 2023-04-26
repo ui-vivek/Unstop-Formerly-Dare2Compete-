@@ -1,34 +1,42 @@
 import { useState, useEffect } from "react";
+import "./Sets.css";
 
 function Sets() {
   const [coach, setCoach] = useState(new Array(80).fill("A"));
-  const [numSeats, setNumSeats] = useState("");
-  const [message, setMessage] = useState("");
-  coach[0] = 'B'; // Example booking
-  coach[7] = 'B';
-  coach[8] = 'B';
-  coach[10] = 'B';
+  const [numSeats, setNumSeats] = useState(0);
 
-  coach[12] = 'B';
-  coach[30] = 'B';
-  coach[31] = 'B';
-  coach[32] = 'B';
-  coach[33] = 'B';
   useEffect(() => {
-    const availableSeats = coach.filter((seat) => seat === "A").length;
-    if (numSeats > availableSeats) {
-      setMessage(`Sorry, only ${availableSeats} seats are available.`);
-    } else if (numSeats > 7) {
-      setMessage("Sorry, you can only reserve up to 7 seats at a time.");
-    } else {
-      setMessage("");
-    }
-  }, [coach, numSeats]);
+    // Initialize the coach with all seats available
+    let initialCoach = new Array(80).fill("A");
 
-  function reserveSeats() {
+    // Set the seats that are already booked to 'B'
+    initialCoach[0] = "B"; // Example booking
+    initialCoach[1] = "B";
+    initialCoach[2] = "B";
+    initialCoach[10] = "B";
+    initialCoach[4] = "B";
+
+    setCoach(initialCoach);
+  }, []);
+
+  const reserveSeats = (event) => {
+    event.preventDefault();
     let seatsBooked = [];
     let startIndex = -1;
     let endIndex = -1;
+
+    // Check if enough seats are available
+    let availableSeats = coach.filter((seat) => seat === "A").length;
+    if (numSeats > availableSeats) {
+      alert(`Sorry, only ${availableSeats} seats are available.`);
+      return;
+    }
+
+    // Check if the number of seats is less than or equal to 7
+    if (numSeats > 7) {
+      alert("Sorry, you can only reserve up to 7 seats at a time.");
+      return;
+    }
 
     // Find a row of available seats if possible
     for (let i = 0; i < coach.length; i++) {
@@ -63,45 +71,50 @@ function Sets() {
     }
 
     // Book the seats
-    const newCoach = [...coach];
+    let updatedCoach = [...coach];
     for (let i = 0; i < seatsBooked.length; i++) {
-      newCoach[seatsBooked[i]] = "B";
+      updatedCoach[seatsBooked[i]] = "B";
     }
-    setCoach(newCoach);
-  }
+    setCoach(updatedCoach);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (numSeats && !message) {
-      reserveSeats();
-    }
-  }
+    // Print the result
+    alert(
+      `Seats booked: ${seatsBooked.map((index) => index + 1).join(", ")}`
+    );
+  };
 
-  function handleNumSeatsChange(e) {
-    const value = parseInt(e.target.value);
-    setNumSeats(value);
-  }
+  const handleNumSeatsChange = (event) => {
+    setNumSeats(Number(event.target.value));
+  };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Number of seats:
-          <input type="number" value={numSeats} onChange={handleNumSeatsChange} />
-        </label>
-        <button type="submit">Book Seats</button>
+    <div className="coach-container">
+      <form onSubmit={reserveSeats}>
+        <label htmlFor="num-seats">Number of seats:</label>
+        <input
+          type="number"
+          id="num-seats"
+          name="num-seats"
+          min="1"
+          value={numSeats}
+          onChange={handleNumSeatsChange}
+          required
+        />
+        <button type="submit">Reserve</button>
       </form>
-      <p>{message}</p>
-      <p>Coach layout:</p>
-      <ul>
+      <div className="coach-box">
         {coach.map((seat, index) => (
-          <li key={index}>
-            Seat {index + 1}: {seat === "A" ? <span style={{color:"blue"}}>Available</span> : <span style={{color:"red"}}>Booked</span>}
-          </li>
+          <div
+            key={index}
+            className={`seat ${seat === "A" ? "available" : "booked"}`}
+          >
+            {index + 1}
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
+  
 }
 
 export default Sets;
