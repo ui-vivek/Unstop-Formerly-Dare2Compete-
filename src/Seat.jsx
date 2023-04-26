@@ -14,7 +14,13 @@ function Sets() {
     initialCoach[1] = "B";
     initialCoach[2] = "B";
     initialCoach[10] = "B";
+    initialCoach[15] = "B";
+    initialCoach[16] = "B";
+    initialCoach[17] = "B";
     initialCoach[4] = "B";
+    initialCoach[22] = "B";
+    initialCoach[23] = "B";
+    initialCoach[24] = "B";
 
     setCoach(initialCoach);
   }, []);
